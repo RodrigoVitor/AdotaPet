@@ -1,0 +1,51 @@
+/* Nav */
+a{
+    padding:0 20px
+}
+
+#container {
+    padding: 25px;
+}
+
+/* Page Welcome */
+#info {
+    margin-bottom:45px;
+}
+
+#whydog div > img {
+    width:550px
+}
+
+#whydog div > p, #living > p, #leave > p {
+    font-size:1.4rem;
+    text-align: justify;
+}
+
+/* Page Dashboard */
+#search {
+    text-align:center;
+}
+#search div > input {
+    border:1px solid #000;
+    margin:15px 0 15px 0;
+    padding: 0px 0 0 15px
+}
+#search div > button {
+    display:block;
+    margin:auto
+}
+
+#infoUser div > p {
+    font-size:1.2rem
+}
+#infoUser div > p > span {
+    font-size:.7rem;
+    margin-left:25px
+}
+
+.imagePet {
+    text-align:center
+}
+.contact {
+    text-align:center
+}
