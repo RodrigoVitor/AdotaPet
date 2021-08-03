@@ -23,7 +23,7 @@ a{
 
 /* Page Dashboard */
 #search {
-    text-align:center;
+    text-align:center; 
 }
 #search div > input {
     border:1px solid #000;
@@ -34,9 +34,16 @@ a{
     display:block;
     margin:auto
 }
+#petContent {
+    border:1px solid #000;
+    margin:40px auto;
+    border-radius: 20px;
+    background-color: rgb(53, 245, 53);
+    padding:5px;
+}
 
 #infoUser div > p {
-    font-size:1.2rem
+    font-size:1.2rem;
 }
 #infoUser div > p > span {
     font-size:.7rem;
@@ -48,4 +55,22 @@ a{
 }
 .contact {
     text-align:center
+}
+
+/* page create pet */
+#create-pet div label {
+    font-size:1.4rem;
+}
+#create-pet div > input, textarea {
+    padding: 0 0 0 20px;
+
+}
+
+#create-pet div > button {
+    display:block;
+    margin:25px auto auto auto
+}
+
+#create-pet form div > div {
+    margin-top:25px
 }

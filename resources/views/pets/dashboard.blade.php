@@ -20,27 +20,31 @@
             </div>
         </form>
     </div>
-
-    <div id="petContent" class="container">
-        <div class="row" id="infoUser">
-            <div class="col s3 m2">
-             <img src="/img/logo.png" alt="logo" width="70"> 
+    @foreach($pets as $pet)
+        <div id="petContent" class="container">
+            <div class="row" id="infoUser">
+                <div class="col s3 m2">
+                <img src="/img/logo.png" alt="logo" width="70"> 
+                </div>
+                <div class="col s9 m10">
+                    <p> <span>00/00/0000</span></p>
+                </div>
             </div>
-            <div class="col s9 m10">
-                <p>Rodrigo Vitor <span>00/00/0000</span></p>
+            <div id="infoPet">
+                <div id="name-pet">
+                    <h5 class="center">{{$pet->name}}</h5>
+                </div>
+                <div class="description">
+                    <p class="center">{{$pet->description}}</p>
+                </div>
+                <div class="imagePet">
+                    <img src="/img/pets/{{$pet->image}}" class="responsive-img" alt="pet">
+                </div>
+                <div class="contact">
+                    <p><strong>Cidade: </strong> {{$pet->city}} - {{$pet->UF}}</p>
+                    <p><strong>Whatsapp: </strong> </p>
+                </div>
             </div>
         </div>
-        <div id="infoPet">
-            <div class="description">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam minus quia eligendi quo inventore, quas ipsa explicabo molestiae voluptas reiciendis maxime veritatis vitae quisquam doloremque ut fugit dolorem maiores sit?</p>
-            </div>
-            <div class="imagePet">
-                <img src="/img/pet.jpg" class="responsive-img" alt="pet">
-            </div>
-            <div class="contact">
-                <p><strong>Cidade: </strong> Santa Rita do Sapucai - MG</p>
-                <p><strong>Whatsapp: </strong> 35998752410</p>
-            </div>
-        </div>
-    </div>
+    @endforeach
 @endsection

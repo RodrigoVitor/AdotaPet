@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PetController::class, 'index']);
 Route::get('/pet/create', [PetController::class, 'create'])->middleware('auth')->name('pet.create');
+Route::post('/pet/create', [PetController::class, 'store'])->middleware('auth')->name('pet.store');
 // Usuarios
 Route::get('/perfil/{id}', [UserController::class, 'showPerfil'])->middleware('auth')->name('user.showperfil');
 Route::put('/user/update/{id}', [UserController::class, 'update'])->middleware('auth')->name('user.update');
