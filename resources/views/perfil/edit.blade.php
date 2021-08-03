@@ -5,10 +5,11 @@
 <x-guest-layout>
     <x-auth-card>
         <x-slot name="logo">
-            <a href="/">
-                {{-- <x-application-logo class="w-20 h-20 fill-current text-gray-500" /> --}}
-                <img src="/img/logo.png" alt="logo" class="w-40 h-40 fill-current text-gray-500" > 
-            </a>
+            <form action="/user/delete/{{$user->id}}" method="POST">
+                @csrf
+                @method('DELETE')
+                <button type="submit" href="#" class="red-text">Excluir conta</button>
+            </form>
         </x-slot>
 
         <!-- Validation Errors -->

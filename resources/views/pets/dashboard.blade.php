@@ -4,7 +4,7 @@
     
 @section('content')
     <div id="search">
-        <a href="#">Publicar pet para adoção</a>
+        <a href="/pet/create">Publicar pet para adoção</a>
         <form action="" method="GET">
             @csrf 
             <div class="row">

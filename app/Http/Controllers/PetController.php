@@ -17,4 +17,8 @@ class PetController extends Controller
 
         return view('pets.dashboard');
     }
+
+    public function create() {
+        return view('pets.create');
+    }
 }
