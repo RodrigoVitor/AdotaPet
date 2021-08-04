@@ -25,7 +25,7 @@
                 <div class="green darken-1">
                   <a href="#" id="menuOpen" class="hide-on-med-and-up">=</a>
                     @auth
-                        <a href="#">Rodrigo Vitor</a>
+                        <a href="#">{{$user->name}} {{$user->lastname}}</a>
                         <form action="/logout" method="POST" class="right hide-on-small-only">
                           @csrf
                           <a href="{{ url('/logout') }}" onclick="event.preventDefault(); this.closest('form').submit()">Sair</a>

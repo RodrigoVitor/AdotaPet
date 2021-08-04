@@ -20,8 +20,21 @@
             </div>
         </form>
     </div>
+    {{-- Verify search --}}
+    @if ($namepet)
+        @if($namecity) 
+        <h6>Buscando por: {{$namepet}} na cidade: {{$namecity}}</h6>
+        @else 
+             <h6>Buscando por: {{$namepet}}</h6>
+        @endif
+    @endif
+    @if ($namecity && $namepet == "")
+        <h6>Buscando por: {{$namepet}} na cidade: {{$namecity}}</h6>
+    @endif
+
+
     @if (count($pets) == 0)
-        <h3>Ainda não tem nenhum pet para adoção</h3>
+        <h5>Ainda não tem nenhum pet para adoção</h5>
     @else
         @foreach($pets as $pet)
             <div id="petContent" class="container">

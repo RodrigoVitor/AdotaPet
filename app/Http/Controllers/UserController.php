@@ -21,9 +21,9 @@ class UserController extends Controller {
         $user = auth()->user();
         $data = $request->all();
         $data['password'] = Hash::make($request->password);
-        if(User::findOrFail($id)->update($data)) {
-             return view('pets.dashboard');
-        }
+        User::findOrFail($id)->update($data);
+        return redirect('/dashboard');
+        
     }
 
     public function destroy($id) {

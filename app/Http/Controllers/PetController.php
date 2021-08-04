@@ -15,17 +15,20 @@ class PetController extends Controller
     }
 
     public function dashboard(Request $request) {
+        $namepet = $request->namePet;
+        $namecity = $request->nameCity;
         if($request->namePet) {
             if($request->nameCity) {
-                $pets = Pet::where([['name', 'like', '%'.$request->namePet.'%', 'and', 'city', 'like', '%'.$request->nameCity.'%']])->get();
+                $pets = Pet::where([['city', 'like', '%'.$request->nameCity.'%']])->get();
+            } else {
+                 $pets = Pet::where([['name', 'like', '%'.$request->namePet.'%']])->get();
             }
-            $pets = Pet::where([['name', 'like', '%'.$request->namePet.'%']])->get();
         } else if($request->nameCity) {
             $pets = Pet::where([['city', 'like', '%'.$request->nameCity.'%']])->get();
         } else if($request->namePet == "" && $request->nameCity == "") {
             $pets = Pet::orderBy("date")->get();
         }
-        return view('pets.dashboard', compact('pets'));
+        return view('pets.dashboard', compact('pets', 'namepet', 'namecity'));
     }
 
     public function create() {
