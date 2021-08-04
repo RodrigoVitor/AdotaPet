@@ -31,7 +31,7 @@
                           <a href="{{ url('/logout') }}" onclick="event.preventDefault(); this.closest('form').submit()">Sair</a>
                         </form>
                         <a href="/perfil/{{$user->id}}" class="right hide-on-small-only">Editar Perfil</a>
-                        <a href="#" class="right hide-on-small-only">Meus pets</a>
+                        <a href="/meuspets/{{$user->id}}" class="right hide-on-small-only">Meus pets</a>
                         <a href="/dashboard" class="right hide-on-small-only">Ver Pets</a>
                     @else
                         <a href="/" class="white-text">AdotaPet</a>
@@ -54,7 +54,7 @@
                         <a href="{{ url('/logout') }}" onclick="event.preventDefault(); this.closest('form').submit()">Sair</a>
                       </form>
                       <a href="/perfil/{{$user->id}}" class="">Editar Perfil</a>
-                      <a href="#" class="">Meus pets</a>
+                      <a href="/meuspets/{{$user->id}}" class="">Meus pets</a>
                       <a href="/dashboard" class="">Ver Pets</a>
                   @else
                       <a href="/" class="white-text">AdotaPet</a>
@@ -71,7 +71,8 @@
         <div id="container">
             @yield('content')
         </div>
-
+        
+       
         <footer id="footer" class="page-footer green darken-2 ">
             <div class="container">
               <div class="row">

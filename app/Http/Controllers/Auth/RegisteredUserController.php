@@ -39,7 +39,13 @@ class RegisteredUserController extends Controller
             'telephone' => 'required|string|max:20|min:9',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'image' => ['required', 'image']
         ]);
+        if($request->hasFile('image') && $request->image->isValid()) {
+            $extension = $request->image->extension();
+            $nameImage = md5($request->image->getClientOriginalName()) . '.' . $extension;
+            $request->image->move(public_path('img/user'), $nameImage);
+        }
 
         $user = User::create([
             'name' => $request->name,
@@ -47,6 +53,7 @@ class RegisteredUserController extends Controller
             'telephone' => $request->telephone,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'image' => $nameImage
         ]);
 
         event(new Registered($user));

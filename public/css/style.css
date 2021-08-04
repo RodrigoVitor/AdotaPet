@@ -41,12 +41,16 @@ a{
     background-color: rgb(53, 245, 53);
     padding:5px;
 }
-
+#infoUser div > img {
+    border-radius:100%
+}
 #infoUser div > p {
     font-size:1.2rem;
+    font-weight:bold;
+    margin-left:15px
 }
 #infoUser div > p > span {
-    font-size:.7rem;
+    font-size:.9rem;
     margin-left:25px
 }
 
@@ -56,6 +60,7 @@ a{
 .contact {
     text-align:center
 }
+.contact p > strong {font-weight:bold;}
 
 /* page create pet */
 #create-pet div label {
@@ -73,4 +78,13 @@ a{
 
 #create-pet form div > div {
     margin-top:25px
+}
+
+/* Page show pet user */
+
+
+/* footer */
+footer { margin-top:155px;}
+@media screen and (min-width:760px) {
+    footer {margin-top:355px}
 }

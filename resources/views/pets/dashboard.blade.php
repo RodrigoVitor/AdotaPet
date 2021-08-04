@@ -5,7 +5,7 @@
 @section('content')
     <div id="search">
         <a href="/pet/create">Publicar pet para adoção</a>
-        <form action="" method="GET">
+        <form action="/dashboard" method="GET">
             @csrf 
             <div class="row">
                 <div class="col l6 m6 s12">
@@ -20,31 +20,36 @@
             </div>
         </form>
     </div>
-    @foreach($pets as $pet)
-        <div id="petContent" class="container">
-            <div class="row" id="infoUser">
-                <div class="col s3 m2">
-                <img src="/img/logo.png" alt="logo" width="70"> 
+    @if (count($pets) == 0)
+        <h3>Ainda não tem nenhum pet para adoção</h3>
+    @else
+        @foreach($pets as $pet)
+            <div id="petContent" class="container">
+                <div class="row" id="infoUser">
+                    <div class="col s3 m2">
+                        <img src="/img/user/{{$pet->user['image']}}" alt="logo" width="70"> 
+                    </div>
+                    <div class="col s9 m10">
+                        <p>{{$pet->user['name']}} {{$pet->user['lastname']}} <span>{{date('d/m/Y', strtotime($pet->date))}}</span></p>
+                    </div>
                 </div>
-                <div class="col s9 m10">
-                    <p> <span>00/00/0000</span></p>
+                <div id="infoPet">
+                    <div id="name-pet">
+                        <h5 class="center">{{$pet->name}}</h5>
+                    </div>
+                    <div class="description">
+                        <p class="center">{{$pet->description}}</p>
+                    </div>
+                    <div class="imagePet">
+                        <img src="/img/pets/{{$pet->image}}" class="responsive-img" alt="pet">
+                    </div>
+                    <div class="contact">
+                        <p>Cidade: <strong> {{$pet->city}} - {{$pet->UF}} </strong></p>
+                        <p>Whatsapp: <strong> {{$pet->user['telephone']}}</strong> </p>
+                    </div>
                 </div>
             </div>
-            <div id="infoPet">
-                <div id="name-pet">
-                    <h5 class="center">{{$pet->name}}</h5>
-                </div>
-                <div class="description">
-                    <p class="center">{{$pet->description}}</p>
-                </div>
-                <div class="imagePet">
-                    <img src="/img/pets/{{$pet->image}}" class="responsive-img" alt="pet">
-                </div>
-                <div class="contact">
-                    <p><strong>Cidade: </strong> {{$pet->city}} - {{$pet->UF}}</p>
-                    <p><strong>Whatsapp: </strong> </p>
-                </div>
-            </div>
-        </div>
-    @endforeach
+        @endforeach
+    @endif
+    
 @endsection
