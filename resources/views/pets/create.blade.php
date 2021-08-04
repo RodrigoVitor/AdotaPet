@@ -4,28 +4,28 @@
 
 @section('content')
   <div class="container" id="create-pet">
-    <form action="/pet/create" method="POST" enctype="multipart/form-data">
+    <form action="/pet/create" method="POST" enctype="multipart/form-data" required>
       @csrf
       <div class="row container">
         <div class="col-12">
           <label for="namePet">Nome do Pet</label>
-          <input type="text" name="name" id="namePet" placeholder="Nome do animal de estimação: (Cachorro, gato, etc)" class="input-text">
+          <input type="text" name="name" id="namePet" placeholder="Nome do animal de estimação: (Cachorro, gato, etc)" class="input-text" required>
         </div>
         <div class="col-8">
           <label for="city">Cidade da adoção</label>
-          <input type="text" name="city" id="city" class="input-text">
+          <input type="text" name="city" id="city" class="input-text" required>
         </div>
         <div class="col-2">
           <label for="UF">UF</label>
-          <input type="text" name="UF" id="UF" class="col-2" placeholder="MG, SP, etc">
+          <input type="text" name="UF" id="UF" class="col-2" placeholder="MG, SP, etc" required>
         </div>
         <div class="col-12">
           <label for="description">Descrição do pet</label>
-          <textarea name="description" id="description" placeholder="Pode passas qualquer tipo de informação"></textarea>
+          <textarea name="description" id="description" placeholder="Pode passas qualquer tipo de informação" required></textarea>
         </div>
         <div class="col-12">
           <label for="image">Imagem do Pet</label>
-          <input type="file" name="image" id="image">
+          <input type="file" name="image" id="image" required>
         </div>
         <div class="col-12">
           <button type="submit" class="btn blue">Enviar</button>

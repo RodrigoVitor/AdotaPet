@@ -32,7 +32,8 @@ a{
 }
 #search div > button {
     display:block;
-    margin:auto
+    margin:auto;
+    position: static;
 }
 #petContent {
     border:1px solid #000;

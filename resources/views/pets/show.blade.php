@@ -4,6 +4,10 @@
 
 @section('content')
     <h3 class="center-align">Meus Pets</h3>
+    @if (count($pets) == 0)
+        <h3>Você ainda não publicou nenhum pet.</h3>
+        <a href="/pet/create">Publicar um pet para adoção.</a>
+    @else
     <table class="striped">
         <thead>
           <tr>
@@ -20,7 +24,7 @@
                 <td>{{$pet->name}}</td>
                 <td>{{$pet->city}} - {{$pet->UF}}</td>
                 <th>
-                    <a href="#" class="btn green">Editar</a>
+                    <a href="/pet/edit/{{$pet->id}}" class="btn green">Editar</a>
                     <form action="/pet/delete/{{$pet->id}}" method="POST">
                         @csrf 
                         @method('DELETE')
@@ -31,5 +35,10 @@
         @endforeach
         </tbody>
       </table>
+
+      <a href="/pet/create">Publicar mais um pet para adoção.</a>
+
+    @endif
+    
             
 @endsection

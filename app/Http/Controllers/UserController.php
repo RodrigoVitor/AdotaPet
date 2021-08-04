@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Models\Pet;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -26,7 +27,18 @@ class UserController extends Controller {
     }
 
     public function destroy($id) {
+        $user = auth()->user();
+        //Delete pet of user
+        $pets = Pet::all()->where('user_id', $user->id);
+        foreach($pets as $pet) {
+            unlink(public_path('img/pets/' . $pet->image));
+        }
+        Pet::where('user_id', $user->id)->delete();
+        //Delete user 
         User::findOrFail($id)->delete();
+        unlink(public_path('img/user/' . $user->image));
+
         return redirect('/dashboard');
+
     }
 }

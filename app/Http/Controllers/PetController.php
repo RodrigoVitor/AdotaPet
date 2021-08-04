@@ -23,7 +23,7 @@ class PetController extends Controller
         } else if($request->nameCity) {
             $pets = Pet::where([['city', 'like', '%'.$request->nameCity.'%']])->get();
         } else if($request->namePet == "" && $request->nameCity == "") {
-            $pets = Pet::all();
+            $pets = Pet::orderBy("date")->get();
         }
         return view('pets.dashboard', compact('pets'));
     }
@@ -71,5 +71,35 @@ class PetController extends Controller
 
         return redirect('/meuspets/'.$user->id);
         
+    }
+
+    public function edit($id) {
+        $user = auth()->user();
+        $pet = Pet::findOrFail($id);
+        if($pet->user_id == $user->id) {
+            return view('pets.edit', compact('pet'));
+        } else {
+            return redirect('/dashboard');
+        }
+    }
+
+    public function update($id, Request $request) {
+        $user = auth()->user();
+        $pet = Pet::findOrfail($id);
+        if($pet->user_id == $user->id) {
+            $data = $request->all();
+            if($request->hasFile('image') && $request->image->isValid()) {
+                $extension = $request->image->extension();
+                $imagePath = md5($request->image->getClientOriginalName()) . "." . $extension;
+                $imageMove = $request->image->move(public_path('img/pets'), $imagePath);
+                $data['image'] = $imagePath;
+                unlink(public_path('img/pets/'.$pet->image));
+            }
+            $pet->update($data);
+            return redirect('/dashboard');
+
+        } else {
+            return redirect('/dashboard');
+        }
     }
 }

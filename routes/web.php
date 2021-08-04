@@ -18,7 +18,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [PetController::class, 'index']);
 Route::get('/pet/create', [PetController::class, 'create'])->middleware('auth')->name('pet.create');
 Route::get('/meuspets/{id}', [PetController::class, 'show'])->middleware('auth')->name('pet.show');
+Route::get('/pet/edit/{id}',[PetController::class, 'edit'])->middleware('auth')->name('pet.edit');;
 Route::delete('pet/delete/{id}', [PetController::class, 'destroy'])->middleware('auth')->name('pet.destroy');
+Route::put('/pet/update/{id}', [PetController::class, 'update'])->middleware('auth')->name('pet.update');
 
 Route::post('/pet/create', [PetController::class, 'store'])->middleware('auth')->name('pet.store');
 
@@ -27,6 +29,6 @@ Route::get('/perfil/{id}', [UserController::class, 'showPerfil'])->middleware('a
 Route::put('/user/update/{id}', [UserController::class, 'update'])->middleware('auth')->name('user.update');
 Route::delete('/user/delete/{id}', [UserController::class, 'destroy'])->middleware('auth')->name('user.delete');
 
-Route::get('/dashboard', [PetController::class, 'dashboard'])->middleware('auth')->name('pet.dashboard');
+Route::get('/dashboard', [PetController::class, 'dashboard'])->name('pet.dashboard');
 
 require __DIR__.'/auth.php';
