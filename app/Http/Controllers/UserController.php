@@ -20,7 +20,20 @@ class UserController extends Controller {
     public function update($id, Request $request) {
         $user = auth()->user();
         $data = $request->all();
-        $data['password'] = Hash::make($request->password);
+        // $data['password'] = Hash::make($request->password);
+        if($request->hasFile('image') && $request->image->isValid())
+        {
+            unlink(public_path('img/user/' . $user->image));
+            $extension = $request->image->extension();
+            $imagePath = md5($request->image->getClientOriginalName()) . $extension;
+            $imageMove = $request->image->move(public_path('img/user'), $imagePath);
+            $data['image'] = $imagePath;
+        }
+        if($request->password != "") {
+            $data['password'] =  Hash::make($request->password);
+        } else {
+            $data['password'] = $user->password;
+        }
         User::findOrFail($id)->update($data);
         return redirect('/dashboard');
         

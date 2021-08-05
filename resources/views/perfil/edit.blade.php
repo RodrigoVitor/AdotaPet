@@ -15,7 +15,7 @@
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-        <form method="POST" action="/user/update/{{$user->id}}">
+        <form method="POST" action="/user/update/{{$user->id}}" enctype="multipart/form-data">
             @csrf
             @method('PUT')
 
@@ -37,11 +37,11 @@
                 <x-input id="email" class="block mt-1 w-full" type="email" name="email" value="{{$user->email}}" required />
             </div>
 
-             <!-- Email Address -->
+             <!-- Telehpone -->
              <div class="mt-4">
                 <x-label for="telehpone" :value="__('Whatsapp')" />
 
-                <x-input id="telephone" class="block mt-1 w-full" type="text" name="telephone" value="{{$user->telephone}}" placeholder="Ex: (11 0000-0000)" required />
+                <x-input id="telephone" class="block mt-1 w-full" type="text" name="telephone" value="{{$user->telephone}}" placeholder="Ex: (11 0000-0000)" maxlength="15" required />
             </div>
 
             <!-- Password -->
@@ -51,7 +51,7 @@
                 <x-input id="password" class="block mt-1 w-full"
                                 type="password"
                                 name="password"
-                                required autocomplete="new-password" />
+                                autocomplete="new-password" />
             </div>
 
             <!-- Confirm Password -->
@@ -60,7 +60,12 @@
 
                 <x-input id="password_confirmation" class="block mt-1 w-full"
                                 type="password"
-                                name="password_confirmation" required />
+                                name="password_confirmation"  />
+            </div>
+            {{-- image --}}
+             <div class="mt-4">
+                <x-label for="image" :value="__('Perfil foto')" />
+                <x-input id="image" class="block mt-1 w-full" type="file" name="image" />
             </div>
 
             <div class="flex items-center justify-end mt-4">
@@ -68,6 +73,7 @@
                     {{ __('Atualizar') }}
                 </x-button>
             </div>
+
         </form>
     </x-auth-card>
 </x-guest-layout>

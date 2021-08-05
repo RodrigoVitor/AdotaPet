@@ -87,9 +87,23 @@
                       <li><a class="grey-text text-lighten-3" href="/login">Entrar</a></li>
                       <li><a class="grey-text text-lighten-3" href="/register">Cadastrar</a></li>
                     @endguest
-                    <li><a class="grey-text text-lighten-3" href="#!">Linkedin: Rodrigo Vitor</a></li>
-                    <li><a class="grey-text text-lighten-3" href="#!">Github: Rodrigo Vitor</a></li>
-                    <li><a class="grey-text text-lighten-3" href="#!">Fonte de pesquisa</a></li>
+                    <li>
+                      <a class="grey-text text-lighten-3" href="https://www.linkedin.com/in/rodrigo-vitor-4b59b7203/" target="_blank">
+                        Linkedin: Rodrigo Vitor
+                      </a>
+                    </li>
+                    <li>
+                      <a class="grey-text text-lighten-3" href="https://github.com/RodrigoVitor" target="_blank">Github: Rodrigo Vitor</a>
+                    </li>
+                    <li>
+                      <a class="grey-text text-lighten-3" href="http://rodrigovitor.epizy.com/" target="_blank">Portfolio: Rodrigo Vitor</a>
+                    </li>
+                    <li>
+                      <a class="grey-text text-lighten-3" href="Fonte de pesquisa:
+                      https://www.affinity-petcare.com/br/os-motivos-por-tras-do-abandono-de-um-animal-de-estimacao" target="_blank">
+                        Fonte de pesquisa
+                      </a>
+                    </li>
                   </ul>
                 </div>
               </div>

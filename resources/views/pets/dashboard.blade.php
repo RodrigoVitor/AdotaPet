@@ -23,13 +23,13 @@
     {{-- Verify search --}}
     @if ($namepet)
         @if($namecity) 
-        <h6>Buscando por: {{$namepet}} na cidade: {{$namecity}}</h6>
+            <h6>Buscando por: {{$namepet}} na cidade: {{$namecity}}</h6>
         @else 
              <h6>Buscando por: {{$namepet}}</h6>
         @endif
     @endif
     @if ($namecity && $namepet == "")
-        <h6>Buscando por: {{$namepet}} na cidade: {{$namecity}}</h6>
+        <h6>Buscando por pet em: {{$namecity}}</h6>
     @endif
 
 

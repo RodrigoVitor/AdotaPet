@@ -34,11 +34,11 @@
                 <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
             </div>
 
-             <!-- Email Address -->
+             <!-- Whatsapp -->
              <div class="mt-4">
                 <x-label for="telehpone" :value="__('Whatsapp')" />
 
-                <x-input id="telephone" class="block mt-1 w-full" type="text" name="telephone" :value="(old('telephone'))" placeholder="Ex: (11 0000-0000)" required />
+                <x-input id="telephone" class="block mt-1 w-full" type="text" name="telephone" :value="(old('telephone'))" placeholder="Ex: (11 0000-0000)" maxlength="15" required />
             </div>
 
             <!-- Password -->
@@ -78,3 +78,29 @@
         </form>
     </x-auth-card>
 </x-guest-layout>
+
+<script> 
+    /* Máscaras ER */
+    function mascara(o,f){
+        v_obj=o
+        v_fun=f
+        setTimeout("execmascara()",1)
+    }
+    function execmascara(){
+        v_obj.value=v_fun(v_obj.value)
+    }
+    function mtel(v){
+        v=v.replace(/\D/g,""); //Remove tudo o que não é dígito
+        v=v.replace(/^(\d{2})(\d)/g,"($1) $2"); //Coloca parênteses em volta dos dois primeiros dígitos
+        v=v.replace(/(\d)(\d{4})$/,"$1-$2"); //Coloca hífen entre o quarto e o quinto dígitos
+        return v;
+    }
+    function id( el ){
+        return document.getElementById( el );
+    }
+    window.onload = function(){
+        id('telephone').onkeyup = function(){
+            mascara( this, mtel );
+        }
+    }
+</script>
